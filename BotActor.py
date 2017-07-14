@@ -4,6 +4,7 @@ import os
 
 import pykka
 from telegram import InlineQueryResultArticle
+from telegram import InputTextMessageContent
 from telegram.ext import InlineQueryHandler
 from telegram.ext import Updater
 
@@ -11,10 +12,11 @@ from telegram.ext import Updater
 class BotActor(pykka.ThreadingActor):
     def __init__(self):
         super(BotActor, self).__init__()
-        self.token = os.getenv('token')
+        self.token = "431107640:AAGsNVNwtQ4SvndIWlA3UjI9WeTOSZBsDVk"
         self.bot = None
 
     def on_start(self):
+        print 'lol'
         updater = Updater(self.token)
         self.bot = updater.bot
 
@@ -30,6 +32,7 @@ class BotActor(pykka.ThreadingActor):
         updater.start_polling()
 
     def post(self, bot, update):
+        print 'here'
         replys = [
             u"Подъем",
             u"Ушел спать",
@@ -50,6 +53,8 @@ class BotActor(pykka.ThreadingActor):
         i = 0
         for r in replys:
             i += 1
-            results.append(InlineQueryResultArticle(i, r, r))
+            results.append(InlineQueryResultArticle(i, r, InputTextMessageContent(r)))
 
-        return self.bot.answerInlineQuery(update.inline_query.id, results)
+        print results
+
+        return bot.answerInlineQuery(update.id, results)
