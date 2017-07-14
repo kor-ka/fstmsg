@@ -1,0 +1,8 @@
+{
+  "name": "fstmsg bot",
+  "description": "telegrsam fast message bot",
+  "image": "heroku/python",
+  "repository": "https://github.com/kor-ka/fstmsg",
+  "keywords": ["python", "telegram", "bot" ],
+  "addons": []
+}
