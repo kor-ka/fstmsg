@@ -12,7 +12,7 @@ from telegram.ext import Updater
 class BotActor(pykka.ThreadingActor):
     def __init__(self):
         super(BotActor, self).__init__()
-        self.token = "431107640:AAGsNVNwtQ4SvndIWlA3UjI9WeTOSZBsDVk"
+        self.token = os.getenv("token")
         self.bot = None
 
     def on_start(self):
@@ -32,7 +32,6 @@ class BotActor(pykka.ThreadingActor):
         updater.start_polling()
 
     def post(self, bot, update):
-        print 'here'
         replys = [
             u"Подъем",
             u"Ушел спать",
@@ -57,4 +56,4 @@ class BotActor(pykka.ThreadingActor):
 
         print results
 
-        return bot.answerInlineQuery(update.id, results)
+        return bot.answerInlineQuery(update.inline_query.id, results)
