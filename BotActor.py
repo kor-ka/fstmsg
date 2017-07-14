@@ -9,9 +9,8 @@ from telegram.ext import Updater
 
 
 class BotActor(pykka.ThreadingActor):
-    def __init__(self, manager):
+    def __init__(self):
         super(BotActor, self).__init__()
-        self.manager = manager
         self.token = os.getenv('token')
         self.bot = None
 
