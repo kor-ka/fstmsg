@@ -51,3 +51,5 @@ class BotActor(pykka.ThreadingActor):
         for r in replys:
             i += 1
             results.append(InlineQueryResultArticle(i, r, r))
+
+        return self.bot.answerInlineQuery(update.inline_query.id, results)
