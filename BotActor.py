@@ -1,31 +1,11 @@
 # coding=utf-8
-import logging
-from pprint import pprint
 
-import sys
-import telegram
-from telegram import Bot
-from telegram import InlineKeyboardMarkup
-from telegram import InlineQueryResult
-from telegram import InlineQueryResultArticle
-from telegram import InlineQueryResultAudio
-from telegram.error import NetworkError, Unauthorized
-from time import sleep
-import paho.mqtt.client as mqtt
-import pykka
-import urllib
-import logging
-import json
 import os
 
-from telegram.ext import CallbackQueryHandler
-from telegram.ext import Filters
+import pykka
+from telegram import InlineQueryResultArticle
 from telegram.ext import InlineQueryHandler
-from telegram.ext import MessageHandler
 from telegram.ext import Updater
-
-import ManagerActor
-from telegram import InlineKeyboardButton, CallbackQuery
 
 
 class BotActor(pykka.ThreadingActor):
